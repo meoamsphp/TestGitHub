@@ -1,18 +1,37 @@
 package appewtc.masterung.videofromurl;
 
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private VideoView myVideoView;
+    private String strVideoUrl = "https://ia600401.us.archive.org/19/items/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+
+        //Bind Widget
+        myVideoView = (VideoView) findViewById(R.id.videoView);
+
+        //About Play Video
+        MediaController objMediaController = new MediaController(this);
+        objMediaController.setAnchorView(myVideoView);
+        objMediaController.setMediaPlayer(myVideoView);
+        Uri objUri = Uri.parse(strVideoUrl);
+        myVideoView.setMediaController(objMediaController);
+        myVideoView.setVideoURI(objUri);
+        myVideoView.start();
+    }   // onCreate
 
 
     @Override
@@ -36,4 +55,4 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-}
+}   // Main Class
