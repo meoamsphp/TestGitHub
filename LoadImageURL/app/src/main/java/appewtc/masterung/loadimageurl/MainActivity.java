@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity {
     //Explicit
     private ImageView imvShow;
 
-    public static final String strImageURL = "http://swiftcodingthai.com/test1/animal/cow.png";
+    public String strImageURL = "https://farm6.staticflickr.com/5542/10495237345_b51704a91d_z.jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
