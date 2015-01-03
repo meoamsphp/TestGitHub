@@ -12,7 +12,7 @@ import android.widget.VideoView;
 public class MainActivity extends ActionBarActivity {
 
     private VideoView myVideoView;
-    private String strVideoUrl = "https://ia600401.us.archive.org/19/items/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+    private String strVideoUrl = "http://swiftcodingthai.com/test1/video/MasterUng.mp4";
 
 
     @Override
