@@ -10,6 +10,8 @@ public class MainActivity extends ActionBarActivity {
 
     //Explicit
     private UserTABLE objUserTABLE;
+    private OfficerTABLE objOfficerTABLE;
+    private LocationTABLE objLocationTABLE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +20,23 @@ public class MainActivity extends ActionBarActivity {
 
         //Call Data
         objUserTABLE = new UserTABLE(this);
+        objOfficerTABLE = new OfficerTABLE(this);
+        objLocationTABLE = new LocationTABLE(this);
+
+        //Tester
+        testerAddData();
+
 
 
     }   // onCreate
+
+    private void testerAddData() {
+
+        objUserTABLE.updateUser(MainActivity.this, "testUser", "testPassword", "testName");
+        objOfficerTABLE.updateOfficer(MainActivity.this, "testOfficer", "testPosition", "testImage", "testVideo");
+        objLocationTABLE.updataLocation(MainActivity.this, "testPlace", 123.456, 654.321, 5);
+
+    }   // testerAddData
 
 
     @Override
