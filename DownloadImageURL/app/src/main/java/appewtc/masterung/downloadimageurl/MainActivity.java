@@ -41,17 +41,6 @@ public class MainActivity extends ActionBarActivity {
     private class DownloadImage extends AsyncTask<String, Void, Bitmap>{
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //Create Progressdialog
-            objProgressDialog = new ProgressDialog(MainActivity.this);
-            objProgressDialog.setTitle("Download Image");
-            objProgressDialog.setMessage("Load Image Wait Please");
-            objProgressDialog.setIndeterminate(false);
-            objProgressDialog.show();
-        }   // onPreExecute
-
-        @Override
         protected Bitmap doInBackground(String... params) {
 
             String strImageURL = params[0];
@@ -70,6 +59,17 @@ public class MainActivity extends ActionBarActivity {
 
             return objBitmap;
         }   // doInBackground
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //Create Progressdialog
+            objProgressDialog = new ProgressDialog(MainActivity.this);
+            objProgressDialog.setTitle("Download Image");
+            objProgressDialog.setMessage("Load Image Wait Please");
+            objProgressDialog.setIndeterminate(false);
+            objProgressDialog.show();
+        }   // onPreExecute
 
         @Override
         protected void onPostExecute(Bitmap bitmap) {
