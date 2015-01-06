@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -33,11 +35,16 @@ public class MainActivity extends ActionBarActivity {
     private UserTABLE objUserTABLE;
     private OfficerTABLE objOfficerTABLE;
     private LocationTABLE objLocationTABLE;
+    private EditText edtUser, edtPassword;
+    private String strUserChoose, strPasswordChoose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Bind Widget
+        bindWidget();
 
         //Call Data
         objUserTABLE = new UserTABLE(this);
@@ -54,8 +61,29 @@ public class MainActivity extends ActionBarActivity {
         synJSONtoSQLite();
 
 
-
     }   // onCreate
+
+    private void bindWidget() {
+        edtUser = (EditText) findViewById(R.id.edtUser);
+        edtPassword = (EditText) findViewById(R.id.edtPassword);
+    }   // bindWidget
+
+
+    //Event Click Login Button
+    public void clickLogin(View view) {
+
+        //Check Zero
+        strUserChoose = edtUser.getText().toString().trim();
+        strPasswordChoose = edtPassword.getText().toString().trim();
+        if (strUserChoose.equals("") || strPasswordChoose.equals("") ) {
+            MyAlertDialog objMyAlert = new MyAlertDialog();
+            objMyAlert.nagativeDialog(MainActivity.this, "มีช่องว่าง", "กรุณา กรอกทุกช่อง");
+        } else {
+
+        }   // Check Zero
+
+    }   // clickLogin
+
 
     private void deleteAllData() {
 
@@ -134,7 +162,6 @@ public class MainActivity extends ActionBarActivity {
         }   // up Data
 
 
-
     }   // synJSONtoSQLite
 
     private void testerAddData() {
@@ -189,7 +216,7 @@ public class MainActivity extends ActionBarActivity {
         ConnectivityManager objConnectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo objNetworkInfo = objConnectivityManager.getActiveNetworkInfo();
 
-        if (objNetworkInfo != null && objNetworkInfo.isConnected() ) {
+        if (objNetworkInfo != null && objNetworkInfo.isConnected()) {
             Toast.makeText(MainActivity.this, "Internet OK", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(MainActivity.this, "Cannot Connected Internet", Toast.LENGTH_SHORT).show();
