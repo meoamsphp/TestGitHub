@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
     private OfficerTABLE objOfficerTABLE;
     private LocationTABLE objLocationTABLE;
     private EditText edtUser, edtPassword;
-    private String strUserChoose, strPasswordChoose;
+    private String strUserChoose, strPasswordChoose, strPasswordTrue, strName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +80,39 @@ public class MainActivity extends ActionBarActivity {
             objMyAlert.nagativeDialog(MainActivity.this, "มีช่องว่าง", "กรุณา กรอกทุกช่อง");
         } else {
 
+            //Check User
+            checkUser();
+
         }   // Check Zero
 
     }   // clickLogin
+
+    private void checkUser() {
+
+        try {
+
+            String arrayDATA[] = objUserTABLE.searchUser(strUserChoose);
+
+            strPasswordTrue = arrayDATA[2];
+            strName = arrayDATA[3];
+
+            Log.d("osp", "Name ==> " + strName);
+
+            //Check Password
+            checkPassword();
+
+        } catch (Exception e) {
+            MyAlertDialog objMyAlert = new MyAlertDialog();
+            objMyAlert.nagativeDialog(MainActivity.this, "No This User", "No " + strUserChoose + " in my Database");
+        }
+
+    }   // checkUser
+
+    private void checkPassword() {
+
+
+
+    }   //checkPassword
 
 
     private void deleteAllData() {
