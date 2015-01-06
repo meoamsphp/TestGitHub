@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -173,6 +174,9 @@ public class MainActivity extends ActionBarActivity {
                 break;
 
             case R.id.itemAboutMe:
+                Intent myWebView = new Intent(Intent.ACTION_VIEW);
+                myWebView.setData(Uri.parse("http://androidthai.in.th/about-me.html"));
+                startActivity(myWebView);
                 break;
 
         }   // switch
