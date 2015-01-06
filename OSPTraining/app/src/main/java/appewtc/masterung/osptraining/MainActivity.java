@@ -1,6 +1,9 @@
 package appewtc.masterung.osptraining;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -160,8 +163,42 @@ public class MainActivity extends ActionBarActivity {
                 Toast.makeText(MainActivity.this, "ซิ้งโครไนซ์ เรียบร้อยแล้วคะ", Toast.LENGTH_SHORT).show();
                 break;
 
+            case R.id.itemCheckInternet:
+                checkInternet();
+                break;
+
+            case R.id.itemHelpMe:
+                Intent objIntent = new Intent(MainActivity.this, HelpMeActivity.class);
+                startActivity(objIntent);
+                break;
+
+            case R.id.itemAboutMe:
+                break;
+
         }   // switch
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void checkInternet() {
+
+        ConnectivityManager objConnectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo objNetworkInfo = objConnectivityManager.getActiveNetworkInfo();
+
+        if (objNetworkInfo != null && objNetworkInfo.isConnected() ) {
+            Toast.makeText(MainActivity.this, "Internet OK", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "Cannot Connected Internet", Toast.LENGTH_SHORT).show();
+        }
+
+    }   // checkInternet
 }   // Main Class
+
+
+
+
+
+
+
+
+

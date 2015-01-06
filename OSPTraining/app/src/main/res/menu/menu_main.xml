@@ -5,6 +5,8 @@
 
     <item android:id="@+id/itemCheckInternet" android:title="Check Internet"/>
     <item android:id="@+id/itemSynJSON" android:title="Syn Data From Server"/>
+    <item android:id="@+id/itemHelpMe" android:title="Help My"/>
+    <item android:id="@+id/itemAboutMe" android:title="About Me"/>
 
 
 </menu>
