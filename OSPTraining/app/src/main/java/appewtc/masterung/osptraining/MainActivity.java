@@ -1,5 +1,7 @@
 package appewtc.masterung.osptraining;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
@@ -110,9 +112,41 @@ public class MainActivity extends ActionBarActivity {
 
     private void checkPassword() {
 
-
+        if (strPasswordChoose.equals(strPasswordTrue)) {
+            showAlertWelcome();
+        } else {
+            MyAlertDialog objMyAlert = new MyAlertDialog();
+            objMyAlert.nagativeDialog(MainActivity.this, "Password False", "Please Type Agains Password False");
+        }
 
     }   //checkPassword
+
+    private void showAlertWelcome() {
+
+        AlertDialog.Builder objAlert = new AlertDialog.Builder(this);
+        objAlert.setIcon(R.drawable.icon_build);
+        objAlert.setTitle("Welcome");
+        objAlert.setMessage("ยินดีต้อนรับ" + "\n" + strName + "\n" + "สู่ระบบค้นหา ของเรา");
+        objAlert.setCancelable(false);
+        objAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent objIntent = new Intent(MainActivity.this, OfficerListView.class);
+                startActivity(objIntent);
+                finish();
+            }
+        });
+        objAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                edtUser.setText("");
+                edtPassword.setText("");
+                dialog.dismiss();
+            }
+        });
+        objAlert.show();
+
+    }   // showAlertWelcome
 
 
     private void deleteAllData() {
