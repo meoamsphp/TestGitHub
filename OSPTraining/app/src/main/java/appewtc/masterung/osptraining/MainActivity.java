@@ -1,5 +1,6 @@
 package appewtc.masterung.osptraining;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -39,7 +41,10 @@ public class MainActivity extends ActionBarActivity {
         objLocationTABLE = new LocationTABLE(this);
 
         //Tester
-        testerAddData();
+        //testerAddData();
+
+        //Delete All Data
+        deleteAllData();
 
         //Syn JSON to SQLite
         synJSONtoSQLite();
@@ -47,6 +52,13 @@ public class MainActivity extends ActionBarActivity {
 
 
     }   // onCreate
+
+    private void deleteAllData() {
+
+        SQLiteDatabase objSQLite = openOrCreateDatabase("Osp.db", MODE_PRIVATE, null);
+        objSQLite.delete("userTABLE", null, null);
+
+    }   // deleteAllData
 
     private void synJSONtoSQLite() {
 
@@ -139,15 +151,16 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        switch (item.getItemId()) {
+
+            case R.id.itemSynJSON:
+                deleteAllData();
+                synJSONtoSQLite();
+                Toast.makeText(MainActivity.this, "ซิ้งโครไนซ์ เรียบร้อยแล้วคะ", Toast.LENGTH_SHORT).show();
+                break;
+
+        }   // switch
 
         return super.onOptionsItemSelected(item);
     }
