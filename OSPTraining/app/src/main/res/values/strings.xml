@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_help_me">HelpMeActivity</string>
     <string name="title_activity_officer_list_view">OfficerListView</string>
+    <string name="title_activity_detail">DetailActivity</string>
 
 </resources>

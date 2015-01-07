@@ -28,6 +28,10 @@
             android:name=".OfficerListView"
             android:label="@string/title_activity_officer_list_view" >
         </activity>
+        <activity
+            android:name=".DetailActivity"
+            android:label="@string/title_activity_detail" >
+        </activity>
     </application>
 
 </manifest>
