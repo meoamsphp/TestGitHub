@@ -37,7 +37,17 @@
         </activity>
         <activity
             android:name=".SearchOfficerActivity"
-            android:label="@string/title_activity_search_officer" >
+            android:label="@string/title_activity_search_officer"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".VideoActivity"
+            android:label="@string/title_activity_video"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".MyMapActivity"
+            android:label="@string/title_activity_my_map" >
         </activity>
     </application>
 

@@ -128,7 +128,7 @@ public class MainActivity extends ActionBarActivity {
         objAlert.setTitle("Welcome");
         objAlert.setMessage("ยินดีต้อนรับ" + "\n" + strName + "\n" + "สู่ระบบค้นหา ของเรา");
         objAlert.setCancelable(false);
-        objAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        objAlert.setPositiveButton("Officer", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent objIntent = new Intent(MainActivity.this, OfficerListView.class);
@@ -136,6 +136,17 @@ public class MainActivity extends ActionBarActivity {
                 finish();
             }
         });
+
+        objAlert.setNeutralButton("MyMap", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent mapIntent = new Intent(MainActivity.this, MyMapActivity.class);
+                startActivity(mapIntent);
+                finish();
+            }
+        });
+
+
         objAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

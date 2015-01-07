@@ -139,6 +139,11 @@ public class DetailActivity extends ActionBarActivity {
 
     public void clickVideo(View view) {
 
+        Intent objIntent = new Intent(DetailActivity.this, VideoActivity.class);
+        objIntent.putExtra("Video", strVideoURL);
+        startActivity(objIntent);
+        finish();
+
     }   // clickvideo
 
     public void clickReadAll(View view) {

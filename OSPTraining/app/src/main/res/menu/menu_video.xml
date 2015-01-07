@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="appewtc.masterung.osptraining.VideoActivity">
+
+    <item android:id="@+id/itemReadAll" android:title="Read All Data"/>
+    <item android:id="@+id/itemSearchFromVideo" android:title="Search Officer"/>
+
+</menu>

@@ -8,5 +8,7 @@
     <string name="title_activity_officer_list_view">OfficerListView</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_search_officer">SearchOfficerActivity</string>
+    <string name="title_activity_video">VideoActivity</string>
+    <string name="title_activity_my_map">MyMapActivity</string>
 
 </resources>
