@@ -1,13 +1,21 @@
 package appewtc.masterung.osptraining;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.InputStream;
+import java.net.URL;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -16,7 +24,7 @@ public class DetailActivity extends ActionBarActivity {
     private TextView txtShowOfficer, txtShowPosition;
     private ImageView imvShowOfficer;
     private String strOfficer, strPosition, strImageURL, strVideoURL;
-
+    private ProgressDialog objPrograssDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +40,77 @@ public class DetailActivity extends ActionBarActivity {
         //Set Up TextView
         setUpTextView();
 
+        //Download Image From URL
+        downloadImageFromURL();
+
 
     }   // onCreate
+
+
+    //Create AsyncTask Class
+    private class DownLoadImage extends AsyncTask<String, Void, Bitmap>{
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+
+            String strImageURL = params[0];
+            Bitmap objBitmap = null;
+
+            try {
+
+                //Down Image form URL
+                //new java.net.URL ==>
+                InputStream objInputStream = new URL(strImageURL).openStream();
+                //Decode Bitmap
+                objBitmap = BitmapFactory.decodeStream(objInputStream);
+
+            } catch (Exception e) {
+                Log.d("osp", "Create AsyncTask ==> " + e.toString());
+            }   // try
+
+            return objBitmap;
+        }   // doInBackground
+
+
+        //Event Load Image
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            //Create ProgressDialog
+            objPrograssDialog = new ProgressDialog(DetailActivity.this);
+            objPrograssDialog.setTitle("Download Image");
+            objPrograssDialog.setMessage("Please Wait few times");
+            objPrograssDialog.setIndeterminate(false);
+            objPrograssDialog.show();
+
+        }   // onPreExecute
+
+
+        //Finish Download ??
+
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            //super.onPostExecute(bitmap);
+
+            imvShowOfficer.setImageBitmap(bitmap);
+            objPrograssDialog.dismiss();
+
+        }   // onPost
+
+    }   //DownLoadImage Class
+
+
+
+
+    private void downloadImageFromURL() {
+
+        new DownLoadImage().execute(strImageURL);
+
+    }   // downloadImageFromURL
 
     private void setUpTextView() {
 
