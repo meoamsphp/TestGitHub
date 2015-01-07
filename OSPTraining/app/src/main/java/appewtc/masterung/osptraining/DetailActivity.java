@@ -1,18 +1,79 @@
 package appewtc.masterung.osptraining;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class DetailActivity extends ActionBarActivity {
+
+    //Explicit
+    private TextView txtShowOfficer, txtShowPosition;
+    private ImageView imvShowOfficer;
+    private String strOfficer, strPosition, strImageURL, strVideoURL;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-    }
+
+        //Initial Widget
+        initialWidget();
+
+        //Get Value from Intent
+        myGetValueFromIntent();
+
+        //Set Up TextView
+        setUpTextView();
+
+
+    }   // onCreate
+
+    private void setUpTextView() {
+
+        txtShowOfficer.setText(strOfficer);
+        txtShowPosition.setText(strPosition);
+
+    }   // setUpTextView
+
+    private void myGetValueFromIntent() {
+
+        strOfficer = getIntent().getExtras().getString("strOfficer");
+        strPosition = getIntent().getExtras().getString("strPosition");
+        strImageURL = getIntent().getExtras().getString("strImage");
+        strVideoURL = getIntent().getExtras().getString("strVideo");
+
+    }   //myGetValueFromIntent
+
+    private void initialWidget() {
+
+        txtShowOfficer = (TextView) findViewById(R.id.txtShowOfficer);
+        txtShowPosition = (TextView) findViewById(R.id.txtShowPosition);
+        imvShowOfficer = (ImageView) findViewById(R.id.imvShowImage);
+
+    }   //initialWidget
+
+    public void clickVideo(View view) {
+
+    }   // clickvideo
+
+    public void clickReadAll(View view) {
+
+        Intent objIntent = new Intent(DetailActivity.this, OfficerListView.class);
+        startActivity(objIntent);
+        finish();
+
+    }   // clickReadAll
+
+    public void clickSearchData(View view) {
+
+    }   // clickSearchData
 
 
     @Override
@@ -36,4 +97,4 @@ public class DetailActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-}
+}   // Main Class

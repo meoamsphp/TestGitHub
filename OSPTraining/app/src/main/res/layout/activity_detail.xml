@@ -50,6 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Video"
+            android:onClick="clickVideo"
             android:id="@+id/button2"
             android:layout_weight="1" />
 
@@ -57,13 +58,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Read All"
+            android:onClick="clickReadAll"
             android:id="@+id/button3"
             android:layout_weight="1" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Search Data"
+            android:text="Search"
+            android:onClick="clickSearchData"
             android:id="@+id/button4"
             android:layout_weight="1" />
     </LinearLayout>

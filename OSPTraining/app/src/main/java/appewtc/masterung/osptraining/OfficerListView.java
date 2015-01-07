@@ -1,6 +1,7 @@
 package appewtc.masterung.osptraining;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -9,6 +10,8 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import org.apache.http.HttpEntity;
@@ -49,6 +52,7 @@ public class OfficerListView extends ListActivity{
 
     }   // onCreate
 
+    // Create ListView
     private void createListView() {
 
         Cursor ListOfficer = objOfficerTABLE.readAllData();
@@ -58,6 +62,29 @@ public class OfficerListView extends ListActivity{
         setListAdapter(objSimpleCursorAdapter);
 
     }   // createListView
+
+    //Item Click ListView
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        Cursor objCursor = (Cursor) l.getItemAtPosition(position);
+        String strOfficer = objCursor.getString(objCursor.getColumnIndex(OfficerTABLE.COLUMN_OFFICER));
+        String strPosition = objCursor.getString(objCursor.getColumnIndex(OfficerTABLE.COLUMN_POSITION));
+        String strImage = objCursor.getString(objCursor.getColumnIndex(OfficerTABLE.COLUMN_IMAGE));
+        String strVideo = objCursor.getString(objCursor.getColumnIndex(OfficerTABLE.COLUMN_VIDEO));
+
+        //Intent to DetailActivity
+        Intent objIntent = new Intent(OfficerListView.this, DetailActivity.class);
+        objIntent.putExtra("strOfficer", strOfficer);
+        objIntent.putExtra("strPosition", strPosition);
+        objIntent.putExtra("strImage", strImage);
+        objIntent.putExtra("strVideo", strVideo);
+        startActivity(objIntent);
+        finish();
+
+    }   // onListItemClick
 
     private void synJSONtoSQLite() {
 
