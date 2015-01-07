@@ -84,6 +84,7 @@ public class DetailActivity extends ActionBarActivity {
             objPrograssDialog.setTitle("Download Image");
             objPrograssDialog.setMessage("Please Wait few times");
             objPrograssDialog.setIndeterminate(false);
+           // objPrograssDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             objPrograssDialog.show();
 
         }   // onPreExecute
@@ -149,6 +150,10 @@ public class DetailActivity extends ActionBarActivity {
     }   // clickReadAll
 
     public void clickSearchData(View view) {
+
+        Intent objIntent = new Intent(DetailActivity.this, SearchOfficerActivity.class);
+        startActivity(objIntent);
+        finish();
 
     }   // clickSearchData
 

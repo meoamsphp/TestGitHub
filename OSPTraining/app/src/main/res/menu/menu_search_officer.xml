@@ -1,8 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="appewtc.masterung.osptraining.OfficerListView">
+    tools:context="appewtc.masterung.osptraining.SearchOfficerActivity">
 
-    <item android:id="@+id/itemSearch" android:title="Search Officer"/>
+    <item android:id="@+id/itemListAll" android:title="Read All Data"/>
+
 
 </menu>

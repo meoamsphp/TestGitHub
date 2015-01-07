@@ -22,18 +22,22 @@
         </activity>
         <activity
             android:name=".HelpMeActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_help_me" >
+            android:label="@string/title_activity_help_me"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".OfficerListView"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_officer_list_view" >
+            android:label="@string/title_activity_officer_list_view"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".DetailActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_detail" >
+            android:label="@string/title_activity_detail"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".SearchOfficerActivity"
+            android:label="@string/title_activity_search_officer" >
         </activity>
     </application>
 

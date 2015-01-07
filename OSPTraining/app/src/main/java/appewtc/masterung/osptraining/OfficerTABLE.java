@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**
  * Created by masterUNG on 1/5/15 AD.
@@ -28,6 +29,40 @@ public class OfficerTABLE {
         readSQLite = objMyOpenHelper.getReadableDatabase();
 
     }   // Constructor
+
+    //Search Officer
+    public String[] searchOfficer(String strOfficer) {
+
+        try {
+
+            String resultARRAY[] = null;
+            Cursor objCursor = readSQLite.query(TABLE_OFFICER, new String[] {COLUMN_ID_OFFICER, COLUMN_OFFICER, COLUMN_POSITION, COLUMN_IMAGE, COLUMN_VIDEO}, COLUMN_OFFICER + "=?", new String[] {String.valueOf(strOfficer)}, null, null, null, null);
+
+            if (objCursor != null) {
+                if (objCursor.moveToFirst()) {
+
+                    resultARRAY = new String[objCursor.getColumnCount()];
+                    resultARRAY[0] = objCursor.getString(0);
+                    resultARRAY[1] = objCursor.getString(1);
+                    resultARRAY[2] = objCursor.getString(2);
+                    resultARRAY[3] = objCursor.getString(3);
+                    resultARRAY[4] = objCursor.getString(4);
+
+                }   // if2
+            }   // if1
+
+            objCursor.close();
+            return resultARRAY;
+
+        } catch (Exception e) {
+            Log.d("osp", "Error from search officer ==> " + e.toString());
+            return null;
+        }
+
+       // return new String[0];
+
+    }   // searchOfficer
+
 
     //Read All Data
     public Cursor readAllData() {
