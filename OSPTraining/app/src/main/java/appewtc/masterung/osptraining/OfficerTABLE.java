@@ -2,6 +2,7 @@ package appewtc.masterung.osptraining;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -27,6 +28,20 @@ public class OfficerTABLE {
         readSQLite = objMyOpenHelper.getReadableDatabase();
 
     }   // Constructor
+
+    //Read All Data
+    public Cursor readAllData() {
+
+        Cursor objCursor = readSQLite.query(TABLE_OFFICER, new String[]{COLUMN_ID_OFFICER, COLUMN_OFFICER, COLUMN_POSITION, COLUMN_IMAGE, COLUMN_VIDEO}, null, null, null, null, null);
+
+        if (objCursor != null) {
+            objCursor.moveToFirst();
+        }
+
+        return objCursor;
+    }   // readAllData
+
+
 
     public long updateOfficer(Context context, String strOfficer, String strPosition, String strImage, String strVideo) {
 

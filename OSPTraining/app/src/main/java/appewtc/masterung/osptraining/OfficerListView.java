@@ -1,13 +1,15 @@
 package appewtc.masterung.osptraining;
 
+import android.app.ListActivity;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
-import android.os.StrictMode;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SimpleCursorAdapter;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,15 +24,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 
-public class OfficerListView extends ActionBarActivity {
+public class OfficerListView extends ListActivity{
 
     //Explicit
     private OfficerTABLE objOfficerTABLE;
+    private SimpleCursorAdapter objSimpleCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_officer_list_view);
+       // setContentView(R.layout.activity_officer_list_view);
 
         //Call Data
         objOfficerTABLE = new OfficerTABLE(this);
@@ -41,7 +44,20 @@ public class OfficerListView extends ActionBarActivity {
         //Syn JSON to SQLite
         synJSONtoSQLite();
 
+        //Create List View
+        createListView();
+
     }   // onCreate
+
+    private void createListView() {
+
+        Cursor ListOfficer = objOfficerTABLE.readAllData();
+        String[] from = new String[]{OfficerTABLE.COLUMN_OFFICER};
+        int[] target = new int[]{R.id.txtListOfficer};
+        objSimpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.activity_officer_list_view, ListOfficer, from, target);
+        setListAdapter(objSimpleCursorAdapter);
+
+    }   // createListView
 
     private void synJSONtoSQLite() {
 
