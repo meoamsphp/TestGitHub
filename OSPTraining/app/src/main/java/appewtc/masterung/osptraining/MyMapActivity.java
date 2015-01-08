@@ -1,9 +1,12 @@
 package appewtc.masterung.osptraining;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,6 +66,10 @@ public class MyMapActivity extends FragmentActivity{
                 douLat = latLng.latitude;
                 douLng = latLng.longitude;
 
+                //Show Log
+                Log.i("osp", "Lat ==> " + String.valueOf(douLat));
+                Log.i("osp", "Lng ==> " + String.valueOf(douLng));
+
                 questionDilog();
 
             }   // event
@@ -77,7 +84,23 @@ public class MyMapActivity extends FragmentActivity{
         objAlert.setTitle("Are You Sure ?");
         objAlert.setMessage("You Want to Confirm Position on Map");
         objAlert.setCancelable(false);
-
+        objAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent objIntent = new Intent(MyMapActivity.this, FormPositionActivity.class);
+                objIntent.putExtra("Lat", douLat);
+                objIntent.putExtra("Lng", douLng);
+                startActivity(objIntent);
+                finish();
+            }
+        });
+        objAlert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        objAlert.show();
 
     }   //questionDialog
 
