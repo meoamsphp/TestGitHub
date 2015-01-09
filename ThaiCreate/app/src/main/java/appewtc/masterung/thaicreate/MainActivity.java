@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
                 // TODO Auto-generated stub
 
                 String strSDPath = txtSDCard.getText().toString();
-                String strUrlServer = "http://swiftcodingthai.com/osp/test/uploadFile.php";
+                String strUrlServer = "http://www.smicb.com/Uploadfile.php";
                 String resServer = uploadFiletoServer(strSDPath,strUrlServer);
 
                 /** Get result from Server (Return the JSON Code)
