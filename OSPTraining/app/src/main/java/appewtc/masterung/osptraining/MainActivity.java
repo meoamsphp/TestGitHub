@@ -281,6 +281,13 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(myWebView);
                 break;
 
+            case R.id.itmeUpload:
+
+                Intent upLoadIntent = new Intent(MainActivity.this, UploadActivity.class);
+                startActivity(upLoadIntent);
+
+                break;
+
         }   // switch
 
         return super.onOptionsItemSelected(item);

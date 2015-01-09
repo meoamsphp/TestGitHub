@@ -11,5 +11,6 @@
     <string name="title_activity_video">VideoActivity</string>
     <string name="title_activity_my_map">MyMapActivity</string>
     <string name="title_activity_form_position">FormPositionActivity</string>
+    <string name="title_activity_upload">UploadActivity</string>
 
 </resources>

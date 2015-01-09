@@ -60,6 +60,10 @@
             android:name=".FormPositionActivity"
             android:label="@string/title_activity_form_position" >
         </activity>
+        <activity
+            android:name=".UploadActivity"
+            android:label="@string/title_activity_upload" >
+        </activity>
     </application>
 
 </manifest>

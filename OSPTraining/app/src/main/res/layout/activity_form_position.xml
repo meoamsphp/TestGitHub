@@ -24,7 +24,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/edtPlace"
             android:hint="Place Name :" />
 
         <LinearLayout
@@ -45,27 +45,29 @@
 
                     <RadioGroup
                         android:layout_width="wrap_content"
+                        android:id="@+id/ragChoice"
                         android:layout_height="wrap_content">
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
-                            android:id="@+id/radioButton"
-                            android:layout_marginTop="10dp" />
+                            android:id="@+id/radHome"
+                            android:layout_marginTop="10dp"
+                            android:checked="true" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
-                            android:id="@+id/radioButton2"
+                            android:id="@+id/radOffice"
                             android:layout_marginTop="20dp" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
-                            android:id="@+id/radioButton3"
+                            android:id="@+id/radSchool"
                             android:layout_marginTop="15dp" />
                     </RadioGroup>
                 </LinearLayout>
@@ -96,5 +98,32 @@
 
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/txtLat"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/txtLng"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clickSave"
+        android:text="Save Data"
+        android:id="@+id/button9"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>
