@@ -24,6 +24,7 @@ public class MainActivity extends ActionBarActivity {
         myVideoView = (VideoView) findViewById(R.id.videoView);
 
         //About Play Video
+        //android.widget
         MediaController objMediaController = new MediaController(this);
         objMediaController.setAnchorView(myVideoView);
         objMediaController.setMediaPlayer(myVideoView);
