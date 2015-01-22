@@ -8,11 +8,24 @@ import android.view.MenuItem;
 
 public class MainActivity extends ActionBarActivity {
 
+    private RevenueTABLE objRevenueTABLE;
+    private ExpendTABLE objExpendTABLE;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+
+        connectedMyDatabase();
+
+    }   // onCreate
+
+    private void connectedMyDatabase() {
+
+        objExpendTABLE = new ExpendTABLE(this);
+        objRevenueTABLE = new RevenueTABLE(this);
+
+    }   // connectedMyDatabase
 
 
     @Override
@@ -36,4 +49,4 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-}
+}   // Main Class
