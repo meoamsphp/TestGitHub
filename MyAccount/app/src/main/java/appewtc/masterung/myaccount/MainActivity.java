@@ -1,15 +1,18 @@
 package appewtc.masterung.myaccount;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private RevenueTABLE objRevenueTABLE;
     private ExpendTABLE objExpendTABLE;
+    private Boolean bolClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,24 @@ public class MainActivity extends ActionBarActivity {
         connectedMyDatabase();
 
     }   // onCreate
+
+    public void clickRevenue(View view) {
+        bolClick = true;
+        myIntentToForm();
+    }   // clickRevenue
+
+    private void myIntentToForm() {
+
+        Intent objIntent = new Intent(MainActivity.this, FormActivity.class);
+        objIntent.putExtra("bolClick", bolClick);
+        startActivity(objIntent);
+
+    }   // myIntentToForm
+
+    public void clickExpend(View view) {
+        bolClick = false;
+        myIntentToForm();
+    }   // clickExpend
 
     private void connectedMyDatabase() {
 

@@ -8,4 +8,27 @@
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="clickRevenue"
+            android:id="@+id/button"
+            android:layout_weight="1"
+            android:text="@string/revenue" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="clickExpend"
+            android:id="@+id/button2"
+            android:layout_weight="1"
+            android:text="@string/expend" />
+    </LinearLayout>
+
 </RelativeLayout>
