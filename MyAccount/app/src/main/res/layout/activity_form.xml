@@ -44,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editText2"
-            android:hint="THB" />
+            android:hint="THB"
+            android:inputType="numberDecimal" />
     </LinearLayout>
 
     <Button
@@ -52,5 +53,6 @@
         android:layout_height="wrap_content"
         android:text="Save Data"
         android:id="@+id/button3"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:textColor="#ffffffff" />
 </RelativeLayout>
