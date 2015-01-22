@@ -4,13 +4,20 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class FormActivity extends ActionBarActivity {
 
     private boolean bolClick;
-    private TextView txtShowTitle;
+    private TextView txtShowTitle, txtShowTime;
+    private String strTime;
+    private EditText edtType, edtData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,18 +28,34 @@ public class FormActivity extends ActionBarActivity {
 
         checkIntentClick();
 
+        getTimeToShow();
+
     }   // onCreate
+
+    private void getTimeToShow() {
+
+        DateFormat myDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date curentData = new Date();
+        strTime = myDateFormat.format(curentData);
+        txtShowTime.setText(strTime);
+
+    }   // getTimeToShow
 
     private void initialWidget() {
         txtShowTitle = (TextView) findViewById(R.id.txtShowTitle);
+        txtShowTime = (TextView) findViewById(R.id.txtShowTime);
+        edtType = (EditText) findViewById(R.id.editText);
+        edtData = (EditText) findViewById(R.id.editText2);
     }   // initialWidget
 
     private void checkIntentClick() {
         bolClick = getIntent().getExtras().getBoolean("bolClick");
         if (bolClick) {
             txtShowTitle.setText(FormActivity.this.getString(R.string.revenue));
+            edtType.setHint(FormActivity.this.getString(R.string.revenue));
         } else {
             txtShowTitle.setText(FormActivity.this.getString(R.string.expend));
+            edtType.setHint(FormActivity.this.getString(R.string.expend));
         }
     }   // checkIntentClick
 
@@ -58,4 +81,6 @@ public class FormActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }   // Main Class
